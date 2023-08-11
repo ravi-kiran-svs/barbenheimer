@@ -17,8 +17,7 @@ public class BomberController : MonoBehaviour {
 
     private void Update() {
         if (Input.GetButtonDown("DropBomb")) {
-            //Player reposition logic must be added.
-            bombService.DropBomb(transform.position);
+            bombService.DropBomb(transform.position, GetComponent<Collider>());
         }
     }
 
