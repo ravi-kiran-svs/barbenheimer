@@ -6,6 +6,7 @@ public class BomberController : MonoBehaviour, IBoomable {
 
     [SerializeField] private float vMax = 10;
     [SerializeField] private BombService bombService;
+    private BombModel bombParams;
 
     private Rigidbody rBody;
 
@@ -13,11 +14,13 @@ public class BomberController : MonoBehaviour, IBoomable {
 
     private void Awake() {
         rBody = GetComponent<Rigidbody>();
+
+        bombParams = new BombModel(1, 2, 3);
     }
 
     private void Update() {
         if (Input.GetButtonDown("DropBomb")) {
-            bombService.DropBomb(transform.position, GetComponent<Collider>());
+            bombService.DropBomb(transform.position, GetComponent<Collider>(), bombParams);
         }
     }
 

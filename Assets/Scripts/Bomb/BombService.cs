@@ -8,7 +8,7 @@ public class BombService : MonoBehaviour {
 
     [SerializeField] private GameObject Bomb;
 
-    public bool DropBomb(Vector3 p, Collider bomberCollider) {
+    public bool DropBomb(Vector3 p, Collider bomberCollider, BombModel bombParams) {
         p.x = Mathf.RoundToInt(p.x);
         p.z = Mathf.RoundToInt(p.z);
         p.y = 0;
@@ -19,7 +19,7 @@ public class BombService : MonoBehaviour {
             }
         }
 
-        gameObject.Instantiate(Bomb, p, Bomb.transform.rotation, transform, bomberCollider, this);
+        gameObject.Instantiate(Bomb, p, Bomb.transform.rotation, transform, bomberCollider, this, bombParams);
         return true;
     }
 

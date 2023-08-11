@@ -10,14 +10,12 @@ public class BombController : MonoBehaviour, IBoomable {
     [HideInInspector] public BombService bombService;
     [HideInInspector] public Collider bomberCollider;
 
-    [HideInInspector] public int radius = 1;
-    [HideInInspector] public float timeToExplode = 3;
-    [HideInInspector] public float tExplosion = 3;
+    public BombModel bombParams;
 
     private void Start() {
         Physics.IgnoreCollision(bomberCollider, bombCollider, true);
 
-        StartCoroutine(StartBombTimer(timeToExplode));
+        StartCoroutine(StartBombTimer(bombParams.timeToExplode));
     }
 
     private void OnTriggerExit(Collider other) {
@@ -31,7 +29,7 @@ public class BombController : MonoBehaviour, IBoomable {
     }
 
     public void Boom() {
-        bombService.ExplodeBomb(transform.position, tExplosion, 1, 1, 1, 1);
+        bombService.ExplodeBomb(transform.position, bombParams.tExplosion, bombParams.radius, bombParams.radius, bombParams.radius, bombParams.radius);
         Destroy(gameObject);
     }
 }
