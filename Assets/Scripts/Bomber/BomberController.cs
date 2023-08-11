@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BomberController : MonoBehaviour {
+public class BomberController : MonoBehaviour, IBoomable {
 
     [SerializeField] private float vMax = 10;
     [SerializeField] private BombService bombService;
@@ -34,6 +34,7 @@ public class BomberController : MonoBehaviour {
         rBody.velocity = vel;
     }
 
-
-
+    public void Boom() {
+        Debug.Log("Player is BOOM");
+    }
 }
