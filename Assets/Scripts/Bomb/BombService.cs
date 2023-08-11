@@ -8,12 +8,19 @@ public class BombService : MonoBehaviour {
 
     [SerializeField] private GameObject Bomb;
 
-    public void DropBomb(Vector3 p, Collider bomberCollider) {
+    public bool DropBomb(Vector3 p, Collider bomberCollider) {
         p.x = Mathf.RoundToInt(p.x);
         p.z = Mathf.RoundToInt(p.z);
         p.y = 0;
 
+        for (int i = 0; i < transform.childCount; i++) {
+            if (p == transform.GetChild(i).position) {
+                return false;
+            }
+        }
+
         gameObject.Instantiate(Bomb, p, Bomb.transform.rotation, transform, bomberCollider, this);
+        return true;
     }
 
     public void ExplodeBomb(Vector3 pos, float tExplosion, int n_up, int n_right, int n_down, int n_left) {
