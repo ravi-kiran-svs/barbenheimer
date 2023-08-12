@@ -15,7 +15,7 @@ public class BomberController : MonoBehaviour, IBoomable {
     private void Awake() {
         rBody = GetComponent<Rigidbody>();
 
-        bombParams = new BombModel(1, 2, 3);
+        bombParams = new BombModel(3, 2, 3);
     }
 
     private void Update() {

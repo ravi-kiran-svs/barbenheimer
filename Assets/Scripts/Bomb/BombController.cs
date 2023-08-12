@@ -29,7 +29,7 @@ public class BombController : MonoBehaviour, IBoomable {
     }
 
     public void Boom() {
-        bombService.ExplodeBomb(transform.position, bombParams.tExplosion, bombParams.radius, bombParams.radius, bombParams.radius, bombParams.radius);
+        bombService.ExplodeBomb(transform.position, bombParams.tExplosion, bombParams.radius);
         Destroy(gameObject);
     }
 }
