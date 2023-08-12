@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8164955735194537430}
   - component: {fileID: 3549169151651560342}
   - component: {fileID: 8754214648156948327}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,9 +129,6 @@ MonoBehaviour:
   bombTrigger: {fileID: 8164955735194537430}
   bombService: {fileID: 0}
   bomberCollider: {fileID: 0}
-  radius: 1
-  timeToExplode: 3
-  tExplosion: 3
 --- !u!54 &8754214648156948327
 Rigidbody:
   m_ObjectHideFlags: 0
