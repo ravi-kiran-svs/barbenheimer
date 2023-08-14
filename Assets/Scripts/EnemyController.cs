@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
 
     [SerializeField] float vMax = 3;
+    [SerializeField] float chaosCutoff = 50;
 
     private int layerMask;
 
@@ -24,16 +25,31 @@ public class EnemyController : MonoBehaviour {
         transform.position = transform.position + dir * vMax * Time.deltaTime;
 
         if (Vector3.Dot((target - transform.position), dir) <= 0) {
+            transform.position = target;
             SetTarget();
         }
     }
 
     private void SetTarget() {
         bool doesIntersect = Physics.Raycast(transform.position, dir, 1, layerMask);
+        Debug.DrawRay(transform.position, dir, Color.white, 0.1f);
 
+        Vector3 newDir = dir;
         if (doesIntersect) {
-            dir = -dir;
+            if (Random.Range(0, 100) < chaosCutoff) {
+                newDir = Quaternion.Euler(0, 90 + 180 * Random.Range(0, 2), 0) * dir;
+                Debug.DrawRay(transform.position, newDir, Color.red, 0.1f);
+
+                if (Physics.Raycast(transform.position, newDir, 1, layerMask)) {
+                    newDir = -dir;
+                }
+
+            } else {
+                newDir = -dir;
+            }
         }
+
+        dir = newDir;
         target = transform.position + dir;
     }
 
