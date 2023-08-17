@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour, IBoomable {
 
     [SerializeField] float vMax = 3;
     [SerializeField] float chaosCutoff = 50;
@@ -24,6 +24,18 @@ public class EnemyController : MonoBehaviour {
 
     private void Update() {
         transform.position = transform.position + dir * vMax * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        IBoomable boomable = other.gameObject.GetComponent<IBoomable>();
+
+        if (boomable != null) {
+            boomable.Boom();
+        }
+    }
+
+    public void Boom() {
+        //Destroy(gameObject);
     }
 
     private void SetNewTarget() {
