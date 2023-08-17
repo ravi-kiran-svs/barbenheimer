@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour, IBoomable {
 
     private Vector3 dir = Vector3.zero;
     private Vector3 target = Vector3.zero;
-    private bool isTrapped = false;
 
 
     private void Awake() {
