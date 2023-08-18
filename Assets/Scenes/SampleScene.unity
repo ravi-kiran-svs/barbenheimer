@@ -813,7 +813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419e0b3875b139b4aafb6d9a2dbe1f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallService: {fileID: 1867844928}
   enemyService: {fileID: 0}
   image: {fileID: 2800000, guid: 580c6e90b63b3be42abc710a28859fab, type: 3}
 --- !u!4 &343453023
@@ -2067,8 +2066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ad4513dbb743a48bd857ee2713322e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vMax: 5
-  bombService: {fileID: 1400229914}
+  vMax: 10
 --- !u!1001 &825178495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3904,7 +3902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4bd61d9dce62e409093e8c52eca215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionService: {fileID: 1595973008}
   Bomb: {fileID: 8948429844754665145, guid: c5235d6d51eeff34f9d224fc0f3ed9ed, type: 3}
 --- !u!1001 &1411573542
 PrefabInstance:

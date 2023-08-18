@@ -5,7 +5,6 @@ using UnityEngine;
 public class BomberController : MonoBehaviour, IBoomable {
 
     [SerializeField] private float vMax = 10;
-    [SerializeField] private BombService bombService;
     private BombModel bombParams;
 
     private Rigidbody rBody;
@@ -20,7 +19,7 @@ public class BomberController : MonoBehaviour, IBoomable {
 
     private void Update() {
         if (Input.GetButtonDown("DropBomb")) {
-            bombService.DropBomb(transform.position, GetComponent<Collider>(), bombParams);
+            BombService.Instance.DropBomb(transform.position, GetComponent<Collider>(), bombParams);
         }
     }
 

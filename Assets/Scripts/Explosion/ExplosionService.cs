@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionService : MonoBehaviour {
+public class ExplosionService : MonoSingleton<ExplosionService> {
 
     [SerializeField] private GameObject ExplosionElement;
 

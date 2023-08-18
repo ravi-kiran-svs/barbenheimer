@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombService : MonoBehaviour {
-
-    [SerializeField] private ExplosionService explosionService;
+public class BombService : MonoSingleton<BombService> {
 
     [SerializeField] private GameObject Bomb;
 
@@ -13,7 +11,9 @@ public class BombService : MonoBehaviour {
     private string SolidWallTag = "SolidWall";
     private string BrickWallTag = "BrickWall";
 
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
+
         layerMask = LayerMask.GetMask("Env");
     }
 
@@ -28,7 +28,7 @@ public class BombService : MonoBehaviour {
             }
         }
 
-        gameObject.Instantiate(Bomb, p, Bomb.transform.rotation, transform, bomberCollider, this, bombParams);
+        gameObject.Instantiate(Bomb, p, Bomb.transform.rotation, transform, bomberCollider, bombParams);
         return true;
     }
 
@@ -38,7 +38,7 @@ public class BombService : MonoBehaviour {
         int n_down = GetExplosionRadiusInDir(pos, VectorConstants.DOWN, radius);
         int n_left = GetExplosionRadiusInDir(pos, VectorConstants.LEFT, radius);
 
-        explosionService.Explode(pos, tExplosion, n_up, n_right, n_down, n_left);
+        ExplosionService.Instance.Explode(pos, tExplosion, n_up, n_right, n_down, n_left);
     }
 
     public int GetExplosionRadiusInDir(Vector3 p, Vector3 dir, int r) {

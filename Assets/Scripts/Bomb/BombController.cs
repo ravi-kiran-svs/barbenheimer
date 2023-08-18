@@ -7,7 +7,6 @@ public class BombController : MonoBehaviour, IBoomable {
     [SerializeField] private Collider bombCollider;
     [SerializeField] private Collider bombTrigger;
 
-    [HideInInspector] public BombService bombService;
     [HideInInspector] public Collider bomberCollider;
 
     public BombModel bombParams;
@@ -29,7 +28,7 @@ public class BombController : MonoBehaviour, IBoomable {
     }
 
     public void Boom() {
-        bombService.ExplodeBomb(transform.position, bombParams.tExplosion, bombParams.radius);
+        BombService.Instance.ExplodeBomb(transform.position, bombParams.tExplosion, bombParams.radius);
         Destroy(gameObject);
     }
 }

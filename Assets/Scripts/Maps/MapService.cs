@@ -2,18 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapService : MonoBehaviour {
+public class MapService : MonoSingleton<MapService> {
 
-    [SerializeField] private WallService wallService;
+    // should be removed for singleton EnemyService
     [SerializeField] private GameObject enemyService;
-
-    //remove edges - don't need them
-    //the colours should be proper
-    //image size should be a multiple of 2
     [SerializeField] private Texture2D image;
 
     private void Start() {
-        List<Vector3> stoneWallSpots = new List<Vector3>();
+        //List<Vector3> stoneWallSpots = new List<Vector3>();
         List<Vector3> brickWallSpots = new List<Vector3>();
         List<Vector3> enemySpawnSpots = new List<Vector3>();
 
@@ -21,23 +17,22 @@ public class MapService : MonoBehaviour {
             for (int j = 0; j < image.height; j++) {
                 Color c = image.GetPixel(i, j);
 
-                if (c == Color.white) {
+                if (c == MapColourConstants.WHITE) {
                     // Stone Walls
-                    stoneWallSpots.Add(new Vector3(i, 0, j));
+                    //stoneWallSpots.Add(new Vector3(i, 0, j));
 
-                } else if (c == Color.red) {
-                    // Enemy Spawns
-                    enemySpawnSpots.Add(new Vector3(i, 0, j));
-
-                } else if (c != Color.black) {
+                } else if (c == MapColourConstants.GREY) {
                     // Brick Walls
                     brickWallSpots.Add(new Vector3(i, 0, j));
+
+                } else if (c == MapColourConstants.RED) {
+                    // Enemy Spawns
+                    enemySpawnSpots.Add(new Vector3(i, 0, j));
                 }
             }
         }
 
-        //wallService.RegenerateWalls(stoneWallSpots, brickWallSpots);
-        wallService.RegenerateBrickWalls(brickWallSpots);
+        WallService.Instance.RegenerateBrickWalls(brickWallSpots);
     }
 
 }

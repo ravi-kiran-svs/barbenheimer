@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallService : MonoBehaviour {
+public class WallService : MonoSingleton<WallService> {
 
     [SerializeField] private Transform SolidWalls;
     [SerializeField] private Transform BrickWalls;
