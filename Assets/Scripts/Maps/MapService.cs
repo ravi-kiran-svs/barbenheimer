@@ -33,6 +33,7 @@ public class MapService : MonoSingleton<MapService> {
         }
 
         WallService.Instance.RegenerateBrickWalls(brickWallSpots);
+        EnemyService.Instance.SpawnEnemiesAt(enemySpawnSpots);
     }
 
 }
