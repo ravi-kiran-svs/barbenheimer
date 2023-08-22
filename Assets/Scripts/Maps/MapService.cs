@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MapService : MonoSingleton<MapService> {
 
-    // should be removed for singleton EnemyService
-    [SerializeField] private GameObject enemyService;
     [SerializeField] private Texture2D image;
 
     private void Start() {
