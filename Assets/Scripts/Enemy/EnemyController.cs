@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour, IBoomable {
 
 
     private void Awake() {
-        layerMask = LayerMask.GetMask("Env", "Bomb");
+        layerMask = LayerMask.GetMask("Env", "Bomb", "Expl");
     }
 
     private void Start() {
