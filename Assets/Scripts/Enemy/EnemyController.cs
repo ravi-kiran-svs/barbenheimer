@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour, IBoomable {
     }
 
     public void Boom() {
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     private void SetNewTarget() {
