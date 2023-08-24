@@ -7,19 +7,25 @@ public class EnemyService : MonoSingleton<EnemyService> {
     [SerializeField] private GameObject EnemyPrefab;
     [SerializeField] private EnemyModel[] enemyModels;
 
+    // we need an array of ints = what the number of each enemy type
+    private int[] enemyLayout = { 2, 2, 2 };
+
     public void SpawnEnemiesAt(List<Vector3> list) {
         for (int i = 0; i < transform.childCount; i++) {
             Destroy(transform.GetChild(i).gameObject);
         }
 
-        // assuming we'll spawn 6 bidungas - This part must be complicated
-        for (int i = 0; i < 6; i++) {
+        // This should be iterated in reverse
+        // Difficult enemies should be spawned first
+        for (int enemyType = 0; enemyType < enemyLayout.Length; enemyType++) {
 
-            int rand = Random.Range(0, list.Count);
-            Vector3 p = list[rand];
+            for (int i = 0; i < enemyLayout[enemyType]; i++) {
+                int rand = Random.Range(0, list.Count);
+                Vector3 p = list[rand];
 
-            gameObject.Instantiate(EnemyPrefab, p, EnemyPrefab.transform.rotation, transform, enemyModels[0]);
-            list.RemoveAt(rand);
+                gameObject.Instantiate(EnemyPrefab, p, EnemyPrefab.transform.rotation, transform, enemyModels[enemyType]);
+                list.RemoveAt(rand);
+            }
         }
 
 
