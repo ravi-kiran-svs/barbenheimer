@@ -19,4 +19,10 @@ public static class ExtensionInstantiateClass {
         return explosionElement;
     }
 
+    public static Object Instantiate(this Object obj, Object prefab, Vector3 pos, Quaternion rot, Transform parent, EnemyModel model) {
+        GameObject enemy = Object.Instantiate(prefab, pos, rot, parent) as GameObject;
+        enemy.GetComponent<EnemyController>().SetEnemyModel(model);
+        return enemy;
+    }
+
 }

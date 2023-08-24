@@ -18,9 +18,7 @@ public class EnemyService : MonoSingleton<EnemyService> {
             int rand = Random.Range(0, list.Count);
             Vector3 p = list[rand];
 
-            // instantiate with a model
-            GameObject enemy = Instantiate(EnemyPrefab, p, EnemyPrefab.transform.rotation, transform);
-            enemy.GetComponent<EnemyController>().SetEnemyModel(enemyModels[0]);
+            gameObject.Instantiate(EnemyPrefab, p, EnemyPrefab.transform.rotation, transform, enemyModels[0]);
             list.RemoveAt(rand);
         }
 
