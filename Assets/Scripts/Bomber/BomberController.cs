@@ -21,6 +21,7 @@ public class BomberController : MonoBehaviour, IBoomable {
         if (Input.GetButtonDown("DropBomb")) {
             BombService.Instance.DropBomb(transform.position, GetComponent<Collider>(), bombParams);
         }
+        BomberService.Instance.BomberMovedTo(transform.position);
     }
 
     private void FixedUpdate() {

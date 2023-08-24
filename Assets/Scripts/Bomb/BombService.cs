@@ -41,7 +41,7 @@ public class BombService : MonoSingleton<BombService> {
         ExplosionService.Instance.Explode(pos, tExplosion, n_up, n_right, n_down, n_left);
     }
 
-    public int GetExplosionRadiusInDir(Vector3 p, Vector3 dir, int r) {
+    private int GetExplosionRadiusInDir(Vector3 p, Vector3 dir, int r) {
         int n = 0;
 
         for (int i = 0; i < r; i++) {
