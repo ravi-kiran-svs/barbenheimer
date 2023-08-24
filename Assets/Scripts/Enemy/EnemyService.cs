@@ -10,6 +10,7 @@ public class EnemyService : MonoSingleton<EnemyService> {
     // we need an array of ints = what the number of each enemy type
     private int[] enemyLayout = { 2, 2, 2 };
 
+    // put it in start
     public void SpawnEnemiesAt(List<Vector3> list) {
         for (int i = 0; i < transform.childCount; i++) {
             Destroy(transform.GetChild(i).gameObject);

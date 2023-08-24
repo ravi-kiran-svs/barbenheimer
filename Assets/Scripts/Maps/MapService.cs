@@ -6,6 +6,7 @@ public class MapService : MonoSingleton<MapService> {
 
     [SerializeField] private Texture2D image;
 
+    // This could happen in awake
     private void Start() {
         //List<Vector3> stoneWallSpots = new List<Vector3>();
         List<Vector3> brickWallSpots = new List<Vector3>();
