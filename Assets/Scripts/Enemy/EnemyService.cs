@@ -8,7 +8,7 @@ public class EnemyService : MonoSingleton<EnemyService> {
     [SerializeField] private EnemyModel[] enemyModels;
 
     private void Start() {
-        int[] enemyLayout = LevelService.Instance.EnemyLayout;
+        int[] enemyLayout = LevelService.Instance.EnemiesLayout;
         List<Vector3> enemySpawnSpots = MapService.Instance.EnemySpawnSpots;
 
         for (int i = 0; i < transform.childCount; i++) {
