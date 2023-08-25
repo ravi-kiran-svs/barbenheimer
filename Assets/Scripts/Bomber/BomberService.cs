@@ -10,7 +10,7 @@ public class BomberService : MonoSingleton<BomberService> {
     [SerializeField] private BomberController bomber;
 
     private void Start() {
-        BomberModel bomberStats = LevelService.Instance.BomberStats;
+        BomberModel bomberStats = LevelService.Instance.BomberBoyStats;
 
         bomber.ResetStats(bomberStats);
     }

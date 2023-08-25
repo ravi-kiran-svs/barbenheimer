@@ -10,21 +10,16 @@ public class LevelService : MonoSingleton<LevelService> {
     private int[] enemiesLayout;
     public int[] EnemiesLayout { get { return enemiesLayout; } }
 
-    private BomberModel bomberStats;
-    public BomberModel BomberStats { get { return bomberStats; } }
+    private BomberModel bomberBoyStats;
+    public BomberModel BomberBoyStats { get { return bomberBoyStats; } }
 
     protected override void Awake() {
         base.Awake();
 
-        // levelID = BomberStats.Level;
+        levelID = BomberStats.LevelNumber;
 
         enemiesLayout = EnemyLayout.GetEnemyLayout(levelID);
 
-        //bomberStats = BomberStats.Stats;
-        bomberStats = GetBomberStats();
-    }
-
-    private BomberModel GetBomberStats() {
-        return new BomberModel(4, 1, new BombModel(), false, false, false);
+        bomberBoyStats = BomberStats.Stats;
     }
 }
