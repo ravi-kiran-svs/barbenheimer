@@ -7,14 +7,18 @@ public class EnemyService : MonoSingleton<EnemyService> {
     [SerializeField] private GameObject EnemyPrefab;
     [SerializeField] private EnemyModel[] enemyModels;
 
-    // we need an array of ints = what the number of each enemy type
-    private int[] enemyLayout = { 2, 2, 2 };
+    private void Start() {
+        int[] enemyLayout = LevelService.Instance.EnemyLayout;
+        List<Vector3> enemySpawnSpots = MapService.Instance.EnemySpawnSpots;
 
-    // put it in start
-    public void SpawnEnemiesAt(List<Vector3> list) {
         for (int i = 0; i < transform.childCount; i++) {
             Destroy(transform.GetChild(i).gameObject);
         }
+
+        SpawnEnemiesAt(enemyLayout, enemySpawnSpots);
+    }
+
+    private void SpawnEnemiesAt(int[] enemyLayout, List<Vector3> list) {
 
         // This should be iterated in reverse
         // Difficult enemies should be spawned first

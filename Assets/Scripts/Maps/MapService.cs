@@ -6,11 +6,18 @@ public class MapService : MonoSingleton<MapService> {
 
     [SerializeField] private Texture2D image;
 
-    // This could happen in awake
-    private void Start() {
-        //List<Vector3> stoneWallSpots = new List<Vector3>();
-        List<Vector3> brickWallSpots = new List<Vector3>();
-        List<Vector3> enemySpawnSpots = new List<Vector3>();
+    private List<Vector3> stoneWallSpots = new List<Vector3>();
+    private List<Vector3> brickWallSpots = new List<Vector3>();
+    private List<Vector3> enemySpawnSpots = new List<Vector3>();
+
+    public List<Vector3> StoneWallSpots { get { return stoneWallSpots; } }
+    public List<Vector3> BrickWallSpots { get { return brickWallSpots; } }
+    public List<Vector3> EnemySpawnSpots { get { return enemySpawnSpots; } }
+
+    protected override void Awake() {
+        base.Awake();
+
+        //image randamization in future
 
         for (int i = 0; i < image.width; i++) {
             for (int j = 0; j < image.height; j++) {
@@ -18,7 +25,7 @@ public class MapService : MonoSingleton<MapService> {
 
                 if (c == MapColourConstants.WHITE) {
                     // Stone Walls
-                    //stoneWallSpots.Add(new Vector3(i, 0, j));
+                    stoneWallSpots.Add(new Vector3(i, 0, j));
 
                 } else if (c == MapColourConstants.GREY) {
                     // Brick Walls
@@ -30,9 +37,6 @@ public class MapService : MonoSingleton<MapService> {
                 }
             }
         }
-
-        WallService.Instance.RegenerateBrickWalls(brickWallSpots);
-        EnemyService.Instance.SpawnEnemiesAt(enemySpawnSpots);
     }
 
 }

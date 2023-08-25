@@ -7,9 +7,7 @@ public class CameraService : MonoSingleton<CameraService> {
     private float BomberPosX;
     public float MainCamTargetX { get { return BomberPosX; } }
 
-    protected override void Awake() {
-        base.Awake();
-
+    private void Start() {
         BomberService.Instance.OnBomberMove += OnBomberMove;
     }
 
