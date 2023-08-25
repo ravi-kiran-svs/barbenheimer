@@ -127,4 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ad4513dbb743a48bd857ee2713322e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vMax: 5
+  model:
+    vMax: 4
+    nBombMax: 1
+    bombModel:
+      radius: 1
+      tExplosion: 2
+      timeToExplode: 3
+    brickPass: 0
+    bombPass: 0
+    firePass: 0

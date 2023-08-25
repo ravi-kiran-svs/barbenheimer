@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BomberController : MonoBehaviour, IBoomable {
 
-    [SerializeField] private BomberModel model;
+    [SerializeField] private BomberModel bomberStats;
 
     private Rigidbody rBody;
 
@@ -13,20 +14,27 @@ public class BomberController : MonoBehaviour, IBoomable {
 
     private void Awake() {
         rBody = GetComponent<Rigidbody>();
-        // should be called in Start??? - but works here
-        nBombs = model.nBombMax;
+
+        nBombs = bomberStats.nBombMax;
     }
 
     private void Update() {
         if (Input.GetButtonDown("DropBomb")) {
             if (nBombs > 0) {
-                bool bombDropSuccess = BombService.Instance.DropBomb(transform.position, GetComponent<Collider>(), model.bombModel, OnBombBoom);
+                bool bombDropSuccess = BombService.Instance.DropBomb(transform.position, GetComponent<Collider>(), bomberStats.bombModel, OnBombBoom);
                 if (bombDropSuccess) {
                     nBombs--;
                 }
             }
         }
         BomberService.Instance.BomberMovedTo(transform.position);
+    }
+
+    public void ResetStats(BomberModel stats) {
+        bomberStats = stats;
+
+        // physics layer shit also in future
+        nBombs = stats.nBombMax;
     }
 
     private void OnBombBoom() {
@@ -41,7 +49,7 @@ public class BomberController : MonoBehaviour, IBoomable {
         if (vel.magnitude >= 1) {
             vel = vel.normalized;
         }
-        vel = vel * model.vMax;
+        vel *= bomberStats.vMax;
 
         rBody.velocity = vel;
     }

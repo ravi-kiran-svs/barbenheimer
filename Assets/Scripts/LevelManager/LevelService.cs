@@ -10,15 +10,18 @@ public class LevelService : MonoSingleton<LevelService> {
     private int[] enemyLayout;
     public int[] EnemyLayout { get { return enemyLayout; } }
 
-    // private BomberModel
+    private BomberModel bomberStats;
+    public BomberModel BomberStats { get { return bomberStats; } }
 
     protected override void Awake() {
         base.Awake();
 
         enemyLayout = GetEnemyLayout(levelID);
+        //bomberStats = BomberStats.Stats;
+        bomberStats = GetBomberStats();
     }
 
-    // this shit in another class
+    // this shit in another static class
     private int[] GetEnemyLayout(int id) {
         if (id == 1) {
             return new int[] { 6, 0, 0 };
@@ -38,5 +41,9 @@ public class LevelService : MonoSingleton<LevelService> {
         } else {
             return new int[] { 0, 0, 0 };
         }
+    }
+
+    private BomberModel GetBomberStats() {
+        return new BomberModel(4, 1, new BombModel(), false, false, false);
     }
 }
