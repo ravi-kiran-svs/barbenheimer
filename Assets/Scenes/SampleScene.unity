@@ -4167,7 +4167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1041e530246f434d9514ce91b871e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelID: 5
+  levelID: 1
 --- !u!4 &1440439707
 Transform:
   m_ObjectHideFlags: 0
@@ -6468,8 +6468,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8027621877656043028, guid: b66ae61278e24ba4987232a51180170b, type: 3}
-      propertyPath: vMax
+      propertyPath: nBombMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027621877656043028, guid: b66ae61278e24ba4987232a51180170b, type: 3}
+      propertyPath: model.vMax
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027621877656043028, guid: b66ae61278e24ba4987232a51180170b, type: 3}
+      propertyPath: model.nBombMax
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b66ae61278e24ba4987232a51180170b, type: 3}

@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class BombModel {
 
     public int radius = 1;
@@ -11,6 +14,5 @@ public class BombModel {
         tExplosion = t1;
         timeToExplode = t2;
     }
-
 
 }

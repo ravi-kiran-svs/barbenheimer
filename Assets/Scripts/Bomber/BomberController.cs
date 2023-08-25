@@ -4,24 +4,33 @@ using UnityEngine;
 
 public class BomberController : MonoBehaviour, IBoomable {
 
-    [SerializeField] private float vMax = 10;
-    private BombModel bombParams;
+    [SerializeField] private BomberModel model;
 
     private Rigidbody rBody;
 
     private Vector3 vel;
+    private int nBombs;
 
     private void Awake() {
         rBody = GetComponent<Rigidbody>();
-
-        bombParams = new BombModel(3, 2, 3);
+        // should be called in Start??? - but works here
+        nBombs = model.nBombMax;
     }
 
     private void Update() {
         if (Input.GetButtonDown("DropBomb")) {
-            BombService.Instance.DropBomb(transform.position, GetComponent<Collider>(), bombParams);
+            if (nBombs > 0) {
+                bool bombDropSuccess = BombService.Instance.DropBomb(transform.position, GetComponent<Collider>(), model.bombModel, OnBombBoom);
+                if (bombDropSuccess) {
+                    nBombs--;
+                }
+            }
         }
         BomberService.Instance.BomberMovedTo(transform.position);
+    }
+
+    private void OnBombBoom() {
+        nBombs++;
     }
 
     private void FixedUpdate() {
@@ -32,7 +41,7 @@ public class BomberController : MonoBehaviour, IBoomable {
         if (vel.magnitude >= 1) {
             vel = vel.normalized;
         }
-        vel = vel * vMax;
+        vel = vel * model.vMax;
 
         rBody.velocity = vel;
     }

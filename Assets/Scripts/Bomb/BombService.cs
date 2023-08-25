@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class BombService : MonoSingleton<BombService> {
         layerMask = LayerMask.GetMask("Env");
     }
 
-    public bool DropBomb(Vector3 p, Collider bomberCollider, BombModel bombParams) {
+    public bool DropBomb(Vector3 p, Collider bomberCollider, BombModel bombParams, Action callback) {
         p.x = Mathf.RoundToInt(p.x);
         p.z = Mathf.RoundToInt(p.z);
         p.y = 0;
@@ -28,7 +29,8 @@ public class BombService : MonoSingleton<BombService> {
             }
         }
 
-        gameObject.Instantiate(Bomb, p, Bomb.transform.rotation, transform, bomberCollider, bombParams);
+        GameObject bomb = gameObject.Instantiate(Bomb, p, Bomb.transform.rotation, transform, bomberCollider, bombParams);
+        bomb.GetComponent<BombController>().OnBombBoom += callback;
         return true;
     }
 
