@@ -15,4 +15,8 @@ public class CameraService : MonoSingleton<CameraService> {
         BomberPosX = p.x;
     }
 
+    private void OnDestroy() {
+        BomberService.Instance.OnBomberMove -= OnBomberMove;
+    }
+
 }

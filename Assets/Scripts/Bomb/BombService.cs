@@ -9,8 +9,10 @@ public class BombService : MonoSingleton<BombService> {
 
     private int layerMask;
 
-    private string SolidWallTag = "SolidWall";
-    private string BrickWallTag = "BrickWall";
+    private readonly string SolidWallTag = "SolidWall";
+    private readonly string BrickWallTag = "BrickWall";
+
+    public event Action OnBombBoom;
 
     protected override void Awake() {
         base.Awake();
@@ -18,7 +20,7 @@ public class BombService : MonoSingleton<BombService> {
         layerMask = LayerMask.GetMask("Env");
     }
 
-    public bool DropBomb(Vector3 p, Collider bomberCollider, BombModel bombParams, Action callback) {
+    public bool DropBomb(Vector3 p, Collider bomberCollider, BombModel bombParams) {
         p.x = Mathf.RoundToInt(p.x);
         p.z = Mathf.RoundToInt(p.z);
         p.y = 0;
@@ -29,8 +31,7 @@ public class BombService : MonoSingleton<BombService> {
             }
         }
 
-        GameObject bomb = gameObject.Instantiate(Bomb, p, Bomb.transform.rotation, transform, bomberCollider, bombParams);
-        bomb.GetComponent<BombController>().OnBombBoom += callback;
+        gameObject.Instantiate(Bomb, p, Bomb.transform.rotation, transform, bomberCollider, bombParams);
         return true;
     }
 
@@ -41,6 +42,8 @@ public class BombService : MonoSingleton<BombService> {
         int n_left = GetExplosionRadiusInDir(pos, VectorConstants.LEFT, radius);
 
         ExplosionService.Instance.Explode(pos, tExplosion, n_up, n_right, n_down, n_left);
+
+        OnBombBoom?.Invoke();
     }
 
     private int GetExplosionRadiusInDir(Vector3 p, Vector3 dir, int r) {

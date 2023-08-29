@@ -16,12 +16,17 @@ public class BomberController : MonoBehaviour, IBoomable {
         rBody = GetComponent<Rigidbody>();
 
         nBombs = bomberStats.nBombMax;
+
+    }
+
+    private void Start() {
+        BombService.Instance.OnBombBoom += OnBombBoom;
     }
 
     private void Update() {
         if (Input.GetButtonDown("DropBomb")) {
             if (nBombs > 0) {
-                bool bombDropSuccess = BombService.Instance.DropBomb(transform.position, GetComponent<Collider>(), bomberStats.bombModel, OnBombBoom);
+                bool bombDropSuccess = BombService.Instance.DropBomb(transform.position, GetComponent<Collider>(), bomberStats.bombModel);
                 if (bombDropSuccess) {
                     nBombs--;
                 }
@@ -56,5 +61,9 @@ public class BomberController : MonoBehaviour, IBoomable {
 
     public void Boom() {
         Debug.Log("Player is BOOM");
+    }
+
+    private void OnDestroy() {
+        BombService.Instance.OnBombBoom -= OnBombBoom;
     }
 }

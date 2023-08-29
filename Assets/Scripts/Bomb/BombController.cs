@@ -12,8 +12,6 @@ public class BombController : MonoBehaviour, IBoomable {
 
     public BombModel bombParams;
 
-    public event Action OnBombBoom;
-
     private void Start() {
         Physics.IgnoreCollision(bomberCollider, bombCollider, true);
 
@@ -32,8 +30,6 @@ public class BombController : MonoBehaviour, IBoomable {
 
     public void Boom() {
         BombService.Instance.ExplodeBomb(transform.position, bombParams.tExplosion, bombParams.radius);
-
-        OnBombBoom?.Invoke();
 
         Destroy(gameObject);
     }
