@@ -6,19 +6,12 @@ public class ExplosionService : MonoSingleton<ExplosionService> {
 
     [SerializeField] private GameObject ExplosionElement;
 
-    // related to Object Pooling
-    private int nMaxExpls;
-    private Queue<GameObject> pool = new Queue<GameObject>();
+    GameObjectPoolio pool;
 
     private void Start() {
         BomberModel bomberStats = LevelService.Instance.BomberBoyStats;
-        nMaxExpls = bomberStats.nBombMax * (1 + 4 * bomberStats.bombModel.radius);
-
-        for (int i = 0; i < nMaxExpls; i++) {
-            GameObject expl = Instantiate(ExplosionElement, transform);
-            expl.SetActive(false);
-            pool.Enqueue(expl);
-        }
+        int n = bomberStats.nBombMax * (1 + 4 * bomberStats.bombModel.radius);
+        pool = new GameObjectPoolio(n, ExplosionElement, transform);
     }
 
     // instantiate extension can be removed
@@ -48,7 +41,8 @@ public class ExplosionService : MonoSingleton<ExplosionService> {
     }
 
     private void SpawnExpl(Vector3 p, float t) {
-        GameObject expl = pool.Dequeue();
+        GameObject expl = pool.GetFromPool();
+        //GameObject expl = pool.Dequeue();
         expl.transform.position = p;
         expl.GetComponent<ExplosionElementController>().tExplosion = t;
         expl.GetComponent<ExplosionElementController>().OnExplFinish += OnExplFinish;
@@ -59,7 +53,8 @@ public class ExplosionService : MonoSingleton<ExplosionService> {
 
     private void OnExplFinish(GameObject expl) {
         expl.GetComponent<ExplosionElementController>().OnExplFinish -= OnExplFinish;
-        pool.Enqueue(expl);
+        pool.AddIntoPool(expl);
+        //pool.Enqueue(expl);
     }
 
 }
