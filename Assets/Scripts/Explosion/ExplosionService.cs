@@ -6,6 +6,19 @@ public class ExplosionService : MonoSingleton<ExplosionService> {
 
     [SerializeField] private GameObject ExplosionElement;
 
+    // related to Object Pooling
+    private int nMaxExpls;
+
+    private void Start() {
+        BomberModel bomberStats = LevelService.Instance.BomberBoyStats;
+        nMaxExpls = bomberStats.nBombMax * (1 + 4 * bomberStats.bombModel.radius);
+
+        for (int i = 0; i < nMaxExpls; i++) {
+            GameObject expl = Instantiate(ExplosionElement, transform);
+            expl.SetActive(false);
+        }
+    }
+
     public void Explode(Vector3 pos, float tExplosion, int n_up, int n_right, int n_down, int n_left) {
         gameObject.Instantiate(ExplosionElement, pos, ExplosionElement.transform.rotation, transform, tExplosion);
 
