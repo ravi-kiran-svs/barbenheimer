@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class ExtensionInstantiateClass {
 
+    // Creating a Bomb
     public static GameObject Instantiate(this GameObject obj, GameObject prefab, Vector3 pos, Quaternion rot, Transform parent,
         Collider bomberCollider, BombModel bombParams) {
 
@@ -13,12 +14,14 @@ public static class ExtensionInstantiateClass {
         return bomb;
     }
 
-    public static GameObject Instantiate(this GameObject obj, GameObject prefab, Vector3 pos, Quaternion rot, Transform parent, float t) {
+    // Creating an Explosion Element
+    /*public static GameObject Instantiate(this GameObject obj, GameObject prefab, Vector3 pos, Quaternion rot, Transform parent, float t) {
         GameObject explosionElement = GameObject.Instantiate(prefab, pos, rot, parent);
         explosionElement.GetComponent<ExplosionElementController>().tExplosion = t;
         return explosionElement;
-    }
+    }*/
 
+    // Creating an Enemy
     public static GameObject Instantiate(this GameObject obj, GameObject prefab, Vector3 pos, Quaternion rot, Transform parent, EnemyModel model) {
         GameObject enemy = GameObject.Instantiate(prefab, pos, rot, parent);
         enemy.GetComponent<EnemyController>().SetEnemyModel(model);
