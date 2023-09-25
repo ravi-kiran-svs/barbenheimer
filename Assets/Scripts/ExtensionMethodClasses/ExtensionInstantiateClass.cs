@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,9 +23,10 @@ public static class ExtensionInstantiateClass {
     }*/
 
     // Creating an Enemy
-    public static GameObject Instantiate(this GameObject obj, GameObject prefab, Vector3 pos, Quaternion rot, Transform parent, EnemyModel model) {
+    public static GameObject Instantiate(this GameObject obj, GameObject prefab, Vector3 pos, Quaternion rot, Transform parent, EnemyModel model, Action onDeath) {
         GameObject enemy = GameObject.Instantiate(prefab, pos, rot, parent);
         enemy.GetComponent<EnemyController>().SetEnemyModel(model);
+        enemy.GetComponent<EnemyController>().OnDeath += onDeath;
         return enemy;
     }
 

@@ -13,27 +13,32 @@ public class LevelService : MonoSingleton<LevelService> {
     private BomberModel bomberBoyStats;
     public BomberModel BomberBoyStats { get { return bomberBoyStats; } }
 
-    //[SerializeField] private bool resetLevel = true;
+    [SerializeField] private bool resetLevel = true;
 
     protected override void Awake() {
         base.Awake();
 
         levelID = BomberStats.LevelNumber;
-
         enemiesLayout = EnemyLayout.GetEnemyLayout(levelID);
-
         bomberBoyStats = BomberStats.Stats;
     }
 
     private void Start() {
-        /*if (resetLevel) {
+        if (resetLevel) {
+            WallService.Instance.RegenerateBrickWalls(MapService.Instance.BrickWallSpots);
+            EnemyService.Instance.RegenerateEnemies(enemiesLayout, MapService.Instance.EnemySpawnSpots);
+            BomberService.Instance.ResetStats(bomberBoyStats);
+        }
 
-        }*/
+        BomberService.Instance.Bomber.OnDeath += OnBomberDied;
+        EnemyService.Instance.OnAllEnemiesDied += OnAllEnemiesDied;
+    }
 
-        WallService.Instance.RegenerateBrickWalls(MapService.Instance.BrickWallSpots);
+    private void OnBomberDied() {
+        Debug.Log("TRY AGAIN?");
+    }
 
-        EnemyService.Instance.RegenerateEnemies(enemiesLayout, MapService.Instance.EnemySpawnSpots);
-
-        BomberService.Instance.ResetStats(bomberBoyStats);
+    private void OnAllEnemiesDied() {
+        Debug.Log("NEXT LEVEL!");
     }
 }

@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IBoomable {
+
+    public event Action OnDeath;
 
     [SerializeField] private EnemyModel enemyModel;
     private int layerMask;
@@ -37,6 +40,10 @@ public class EnemyController : MonoBehaviour, IBoomable {
     }
 
     public void Boom() {
+        GetComponent<Collider>().enabled = false;
+
+        OnDeath?.Invoke();
+
         Destroy(gameObject);
     }
 

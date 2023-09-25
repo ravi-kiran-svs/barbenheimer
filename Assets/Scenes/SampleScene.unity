@@ -1229,6 +1229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c4a16913343f24295a7f18cc4a5ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nEnemies: 1
   EnemyPrefab: {fileID: 5543969902939177257, guid: 9f180930624516041ac5b27222a60f36, type: 3}
   enemyModels:
   - {fileID: 11400000, guid: 4eaf1f34149851e4e9dfdc88caaecc61, type: 2}
@@ -4178,6 +4179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1041e530246f434d9514ce91b871e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetLevel: 1
 --- !u!4 &1440439707
 Transform:
   m_ObjectHideFlags: 0

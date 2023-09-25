@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BomberController : MonoBehaviour, IBoomable {
 
+    public event Action OnDeath;
+
     [SerializeField] private BomberModel bomberStats;
 
     private Rigidbody rBody;
@@ -60,7 +62,10 @@ public class BomberController : MonoBehaviour, IBoomable {
     }
 
     public void Boom() {
-        Debug.Log("Player is BOOM");
+        //Debug.Log("Player is BOOM");
+        GetComponent<Collider>().enabled = false;
+
+        OnDeath?.Invoke();
     }
 
     private void OnDestroy() {
