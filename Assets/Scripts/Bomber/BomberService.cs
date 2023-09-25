@@ -9,9 +9,13 @@ public class BomberService : MonoSingleton<BomberService> {
 
     [SerializeField] private BomberController bomber;
 
-    private void Start() {
+    /*private void Start() {
         BomberModel bomberStats = LevelService.Instance.BomberBoyStats;
 
+        bomber.ResetStats(bomberStats);
+    }*/
+
+    public void ResetStats(BomberModel bomberStats) {
         bomber.ResetStats(bomberStats);
     }
 

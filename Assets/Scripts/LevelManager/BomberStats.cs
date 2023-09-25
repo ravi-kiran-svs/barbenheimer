@@ -5,7 +5,7 @@ public static class BomberStats {
         BrickPass, BombPass, FirePass
     }
 
-    private static int level = 1;
+    private static int level = 3;
     public static int LevelNumber { get { return level; } }
 
     private static BomberModel bomberStats = new BomberModel(4, 1, new BombModel(1, 2, 3), false, false, false);

@@ -10,9 +10,9 @@ public class WallService : MonoSingleton<WallService> {
     [SerializeField] private GameObject SolidWallPrefab;
     [SerializeField] private GameObject brickWallPrefab;
 
-    private void Start() {
+    /*private void Start() {
         RegenerateBrickWalls(MapService.Instance.BrickWallSpots);
-    }
+    }*/
 
     public void RegenerateWalls(List<Vector3> stoneWallSpots, List<Vector3> brickWallSpots) {
         RegenerateStoneWalls(stoneWallSpots);

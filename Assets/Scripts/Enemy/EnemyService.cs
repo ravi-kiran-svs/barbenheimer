@@ -7,10 +7,18 @@ public class EnemyService : MonoSingleton<EnemyService> {
     [SerializeField] private GameObject EnemyPrefab;
     [SerializeField] private EnemyModel[] enemyModels;
 
-    private void Start() {
+    /*private void Start() {
         int[] enemyLayout = LevelService.Instance.EnemiesLayout;
         List<Vector3> enemySpawnSpots = MapService.Instance.EnemySpawnSpots;
 
+        for (int i = 0; i < transform.childCount; i++) {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+
+        SpawnEnemiesAt(enemyLayout, enemySpawnSpots);
+    }*/
+
+    public void RegenerateEnemies(int[] enemyLayout, List<Vector3> enemySpawnSpots) {
         for (int i = 0; i < transform.childCount; i++) {
             Destroy(transform.GetChild(i).gameObject);
         }
