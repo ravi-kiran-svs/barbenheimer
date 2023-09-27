@@ -8,7 +8,7 @@ public static class BomberStats {
     private static int level = 1;
     public static int LevelNumber { get { return level; } }
 
-    private static BomberModel bomberStats = new BomberModel(6, 2, new BombModel(3, 2, 3), false, false, false);
+    private static BomberModel bomberStats = new BomberModel(4, 1, new BombModel(1, 2, 3), false, false, false);
     public static BomberModel Stats { get { return bomberStats; } }
 
     // when player finishes a level and choses a power
