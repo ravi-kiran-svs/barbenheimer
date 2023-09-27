@@ -29,6 +29,10 @@ public class UIService : MonoSingleton<UIService> {
     public void DisplayNextLevelScreen() {
         Time.timeScale = 0;
         NextLevelScreen.SetActive(true);
+
+        // arranging the buttons is must lol
+        // they will be there only enable and disable depending on shit
+        // this method will take input of what powers to display
     }
 
     public void OnTryAgainButtonClicked() {

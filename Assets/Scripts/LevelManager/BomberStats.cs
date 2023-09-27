@@ -12,8 +12,8 @@ public static class BomberStats {
     public static BomberModel Stats { get { return bomberStats; } }
 
     // when player finishes a level and choses a power
-    public static void LevelUp(int newLevel, Power power) {
-        level = newLevel;
+    public static void LevelUp(Power power) {
+        level++;
 
         switch (power) {
             case Power.FireUp:

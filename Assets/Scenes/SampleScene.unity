@@ -603,9 +603,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1943265466}
-  - {fileID: 1782812505}
   - {fileID: 267391665}
+  - {fileID: 1782812505}
+  - {fileID: 1943265466}
   m_Father: {fileID: 599332107}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 267391667}
   - component: {fileID: 267391666}
   m_Layer: 5
-  m_Name: PowerUp (2)
+  m_Name: FireUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1193,11 +1193,11 @@ RectTransform:
   m_Children:
   - {fileID: 1876895339}
   m_Father: {fileID: 218209218}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 260, y: -250}
+  m_AnchoredPosition: {x: 260, y: -50}
   m_SizeDelta: {x: 520, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267391666
@@ -1887,6 +1887,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1655651771}
+  - {fileID: 1843688302}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7257,7 +7258,7 @@ GameObject:
   - component: {fileID: 1782812507}
   - component: {fileID: 1782812506}
   m_Layer: 5
-  m_Name: PowerUp (1)
+  m_Name: BombUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7439,6 +7440,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4858143318424998778, guid: 061642f14e503984590ade7aa2655ed3, type: 3}
   m_PrefabInstance: {fileID: 1841781795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1843688301
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 520111077}
+    m_Modifications:
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543969902939177257, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+      propertyPath: m_Name
+      value: Enemy (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+--- !u!4 &1843688302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5543969901675942738, guid: 9f180930624516041ac5b27222a60f36, type: 3}
+  m_PrefabInstance: {fileID: 1843688301}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1849219219
 PrefabInstance:
@@ -8128,7 +8191,7 @@ GameObject:
   - component: {fileID: 1943265468}
   - component: {fileID: 1943265467}
   m_Layer: 5
-  m_Name: PowerUp
+  m_Name: SpeedUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8148,11 +8211,11 @@ RectTransform:
   m_Children:
   - {fileID: 2092505101}
   m_Father: {fileID: 218209218}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 260, y: -50}
+  m_AnchoredPosition: {x: 260, y: -250}
   m_SizeDelta: {x: 520, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1943265467
@@ -9363,6 +9426,14 @@ PrefabInstance:
     - target: {fileID: 8027621877656043026, guid: b66ae61278e24ba4987232a51180170b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027621877656043028, guid: b66ae61278e24ba4987232a51180170b, type: 3}
+      propertyPath: bomberStats.nBombMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027621877656043028, guid: b66ae61278e24ba4987232a51180170b, type: 3}
+      propertyPath: bomberStats.bombModel.radius
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b66ae61278e24ba4987232a51180170b, type: 3}

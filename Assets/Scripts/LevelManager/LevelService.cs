@@ -46,13 +46,11 @@ public class LevelService : MonoSingleton<LevelService> {
     }
 
     public void TryAgain() {
-        // reload the same level
         SceneManager.LoadScene(0);
     }
 
     public void NextLevel(BomberStats.Power powerUp) {
-        // level ++
-        // set powerup
-        // reload same level
+        BomberStats.LevelUp(powerUp);
+        SceneManager.LoadScene(0);
     }
 }
