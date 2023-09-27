@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelService : MonoSingleton<LevelService> {
 
@@ -35,10 +36,23 @@ public class LevelService : MonoSingleton<LevelService> {
     }
 
     private void OnBomberDied() {
+        UIService.Instance.DisplayGameOverScreen();
         Debug.Log("TRY AGAIN?");
     }
 
     private void OnAllEnemiesDied() {
+        UIService.Instance.DisplayNextLevelScreen();
         Debug.Log("NEXT LEVEL!");
+    }
+
+    public void TryAgain() {
+        // reload the same level
+        SceneManager.LoadScene(0);
+    }
+
+    public void NextLevel(BomberStats.Power powerUp) {
+        // level ++
+        // set powerup
+        // reload same level
     }
 }

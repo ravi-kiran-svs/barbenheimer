@@ -1,8 +1,8 @@
 public static class BomberStats {
 
     public enum Power {
-        FireUp, BombUp, SpeedUp,
-        BrickPass, BombPass, FirePass
+        FireUp = 1, BombUp = 2, SpeedUp = 3,
+        BrickPass = 11, BombPass = 12, FirePass = 13
     }
 
     private static int level = 1;
